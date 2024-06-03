@@ -1,0 +1,24 @@
+### CAT
+GET https://http.cat/200
+GET https://http.cat/403
+GET https://http.cat/500
+GET https://http.cat/404
+
+
+### Astrology (Not working)
+POST https://aztro.sameerkumar.website?sign=aries&day=today
+Content-Type: application/json
+
+
+### Chuck
+GET https://api.chucknorris.io/jokes/random?category=sport
+
+### Chuck Categories
+GET https://api.chucknorris.io/jokes/categories
+
+### Random Facts
+GET https://uselessfacts.jsph.pl/api/v2/facts/random
+
+### UK Crime Data
+GET https://data.police.uk/api/crimes-street/all-crime?lat=52.629729&lng=-1.131592&date=2024-01
+
