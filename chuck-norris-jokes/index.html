@@ -12,6 +12,7 @@
   </head>
   <body>
     <main>
+      <label for="categoriesDropdown">Category</label>
       <select id="categoriesDropdown">
         <option value="">Select...</option>
       </select>
@@ -26,28 +27,23 @@
       function loadCategoriesDropdown() {
         fetch("https://api.chucknorris.io/jokes/categories")
           .then((response) => response.json())
-          .then(loadDropDown);
-      }
-
-      function loadDropDown(stringsArray) {
-        for (const string of stringsArray) {
-          buildOption(string);
-        }
-      }
-
-      function buildOption(value) {
-        let option = new Option(value, value);
-        categoriesDropdown.appendChild(option);
+          .then((categories) => categories.filter((c) => c != "explicit"))
+          .then((filteredCategories) => {
+            for (const category of filteredCategories) {
+              let option = new Option(category, category);
+              categoriesDropdown.appendChild(option);
+            }
+          });
       }
 
       function loadJoke() {
         const category = categoriesDropdown.value;
         fetch(`https://api.chucknorris.io/jokes/random?category=${category}`)
           .then((response) => response.json())
-          .then((data) => (jokeParagraph.innerText = data.value));
+          .then((joke) => (jokeParagraph.innerText = joke.value));
       }
 
-      categoriesDropdown.onchange = loadJoke;
+      categoriesDropdown.addEventListener("change", loadJoke);
 
       loadCategoriesDropdown();
     </script>
