@@ -36,8 +36,18 @@ fetch("http://jsonplaceholder.typicode.com/users/1")
   .then(handleUser);
 
 fetch("http://jsonplaceholder.typicode.com/todos/1")
-  .then(handleResponse)
-  .then(handleTodo);
+  .then(function (response) {
+    return response.json();
+  })
+  .then(function (todo) {
+    console.log(todo.title);
+  });
+
+fetch("http://jsonplaceholder.typicode.com/todos/1")
+  .then((response) => response.json()) //JSON.parse(response.body)...the data
+  .then((data) => {
+    console.log(data);
+  });
 
 //   let response = {}
 //   handleRespose(response)
