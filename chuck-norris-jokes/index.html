@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chuck Norris Jokes</title>
+  </head>
+  <body>
+    <main>
+      <select id="categoriesDropdown">
+        <option value="">Select...</option>
+      </select>
+      <p id="jokeParagraph"></p>
+    </main>
+    <script>
+      const categoriesDropdown = document.querySelector("#categoriesDropdown");
+      const jokeParagraph = document.querySelector("#jokeParagraph");
+
+      function loadCategoriesDropdown() {
+        fetch("https://api.chucknorris.io/jokes/categories")
+          .then((response) => response.json())
+          .then(loadDropDown);
+      }
+
+      function loadDropDown(stringsArray) {
+        for (const string of stringsArray) {
+          buildOption(string);
+        }
+      }
+
+      function buildOption(value) {
+        let option = new Option(value, value);
+        categoriesDropdown.appendChild(option);
+      }
+
+      function loadJoke() {
+        const category = categoriesDropdown.value;
+        fetch(`https://api.chucknorris.io/jokes/random?category=${category}`)
+          .then((response) => response.json())
+          .then((data) => (jokeParagraph.innerText = data.value));
+      }
+
+      categoriesDropdown.onchange = loadJoke;
+
+      loadCategoriesDropdown();
+    </script>
+  </body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"
+    />
+    <title>Users</title>
+  </head>
+  <body>
+    <div>
+      <table class="table table-striped" id="usersTable">
+        <thead>
+          <tr>
+            <th>name</th>
+            <th>username</th>
+            <th>email</th>
+            <th>address</th>
+            <th>phone</th>
+            <th>website</th>
+            <th>company</th>
+            <th>catchphrase</th>
+          </tr>
+        </thead>
+        <tbody id="usersTableBody"></tbody>
+      </table>
+    </div>
+
+    <script>
+    //   const usersTable = document.querySelector("#usersTable");
+      const usersTableBody = document.querySelector("#usersTableBody");
+
+      fetch("http://jsonplaceholder.typicode.com/users")
+        .then((response) => response.json())
+        .then((users) => {
+          console.log(users);
+          loadUsersTable(users);
+        });
+
+      function loadUsersTable(users) {
+        usersTableBody.innerHTML = "";
+        for (const user of users) {
+          buildTableRow(user);
+        }
+      }
+
+      function buildTableRow(user) {
+        let row = usersTableBody.insertRow();
+
+        let cell1 = row.insertCell();
+        cell1.innerText = user.name;
+
+        let cell2 = row.insertCell();
+        cell2.innerText = user.username;
+
+        let cell3 = row.insertCell();
+        cell3.innerText = user.email;
+
+        let cell4 = row.insertCell();
+        cell4.innerText = `${user.address.street} ${user.address.city}, ${user.address.zipcode}`;
+
+        let cell5 = row.insertCell();
+        cell5.innerText = user.phone;
+
+        let cell6 = row.insertCell();
+        cell6.innerText = user.website;
+
+        let cell7 = row.insertCell();
+        cell7.innerText = user.company;
+
+        let cell8 = row.insertCell();
+        cell8.innerText = user.catchphrase;
+      }
+    </script>
+  </body>
+</html>
