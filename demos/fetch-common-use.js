@@ -2,7 +2,7 @@
 
 // user
 fetch("http://jsonplaceholder.typicode.com/users/1")
-  .then((response) => response.json())
+  .then((response) => response.json()) //JSON.parse(response.body)
   .then((user) => {
     console.log(user);
   });

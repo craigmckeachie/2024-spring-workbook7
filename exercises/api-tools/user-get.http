@@ -1,1 +1,1 @@
-GET http://jsonplaceholder.typicode.com/users/1
+GET http://jsonplaceholder.typicode.com/todos/1
