@@ -4,13 +4,20 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Chuck Norris Jokes</title>
+    <!-- Centered viewport -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.classless.min.css"
+    />
   </head>
   <body>
     <main>
       <select id="categoriesDropdown">
         <option value="">Select...</option>
       </select>
-      <p id="jokeParagraph"></p>
+      <article>
+        <p id="jokeParagraph"></p>
+      </article>
     </main>
     <script>
       const categoriesDropdown = document.querySelector("#categoriesDropdown");
