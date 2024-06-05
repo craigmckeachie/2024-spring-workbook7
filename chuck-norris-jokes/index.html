@@ -46,11 +46,13 @@
 
       function loadJoke() {
         const category = categoriesDropdown.value;
+        jokeParagraph.style.display = "none";
         loadingSpan.style.display = "inline";
         fetch(`https://api.chucknorris.io/jokes/random?category=${category}`)
           .then((response) => response.json())
           .then((joke) => {
             loadingSpan.style.display = "none";
+            jokeParagraph.style.display = "block";
             jokeParagraph.innerText = joke.value;
           });
       }
