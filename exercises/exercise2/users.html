@@ -11,7 +11,7 @@
   </head>
   <body>
     <main>
-      <table class="table table-striped" id="usersTable">
+      <table id="usersTable">
         <thead>
           <tr>
             <th>Name</th>
@@ -29,7 +29,6 @@
     </main>
 
     <script>
-      //   const usersTable = document.querySelector("#usersTable");
       const usersTableBody = document.querySelector("#usersTableBody");
 
       fetch("http://localhost:3000/users")
