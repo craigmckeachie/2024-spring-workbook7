@@ -11,6 +11,7 @@
 
 - exercise 1 on page 50
 - api `npm run placeholder`
+- 
 
 3. weather app (optional- don't do if you haven't started it yet)
    - mini project page 59
