@@ -10,29 +10,29 @@
     <title>Users</title>
   </head>
   <body>
-    <div>
+    <main>
       <table class="table table-striped" id="usersTable">
         <thead>
           <tr>
-            <th>name</th>
-            <th>username</th>
-            <th>email</th>
-            <th>address</th>
-            <th>phone</th>
-            <th>website</th>
-            <th>company</th>
-            <th>catchphrase</th>
+            <th>Name</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Phone</th>
+            <th>Website</th>
+            <th>Company</th>
+            <th>Catch Phrase</th>
           </tr>
         </thead>
         <tbody id="usersTableBody"></tbody>
       </table>
-    </div>
+    </main>
 
     <script>
-    //   const usersTable = document.querySelector("#usersTable");
+      //   const usersTable = document.querySelector("#usersTable");
       const usersTableBody = document.querySelector("#usersTableBody");
 
-      fetch("http://jsonplaceholder.typicode.com/users")
+      fetch("http://localhost:3000/users")
         .then((response) => response.json())
         .then((users) => {
           console.log(users);
@@ -68,10 +68,10 @@
         cell6.innerText = user.website;
 
         let cell7 = row.insertCell();
-        cell7.innerText = user.company;
+        cell7.innerText = user.company.name;
 
         let cell8 = row.insertCell();
-        cell8.innerText = user.catchphrase;
+        cell8.innerText = user.company.catchPhrase;
       }
     </script>
   </body>
